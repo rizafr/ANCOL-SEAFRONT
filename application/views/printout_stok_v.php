@@ -54,7 +54,7 @@ $this->load->view('menu_v');
 					
 					<select name="kategori" id="kategori">
 						<option value="0"> -- Kategori -- </option>
-						<option value="KONDO">KONDO</option>
+						<option value="CONDO">CONDO</option>
 						<option value="PENT HOUSE">PENT HOUSE</option>
 					</select>
 				</div>

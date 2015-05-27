@@ -91,7 +91,7 @@
                             <td bgcolor="#999999"><div class="isi_tabel"><strong>Total Harga</strong></div></td>
                             <td align="right">
                                 <div class="isi_tabel">
-                                    <input type="text" name="harga_jual_inc_ppn" value="<?php echo $pemesanan->harga_jual; ?>">
+                                    <input type="text" name="harga_pemesanan" value="<?php echo $pemesanan->harga_jual; ?>">
                                     <input type="hidden" name="plafon_kpr" value="<?php echo (round($data_unit->plafon_kpr)); ?>">
                                 </div>
                             </td>
@@ -101,7 +101,7 @@
                             <td bgcolor="#999999"><div class="isi_tabel"><strong>Booking Fee</strong></div></td>
                             <td align="right">
                                 <div class="isi_tabel">
-                                    <input type="text" name="booking_fee" value="<?php echo $pemesanan->booking_fee; ?>">
+                                    <input type="text" name="booking_fee" value="20000000">
                                 </div>
                             </td>
                         </tr>
@@ -111,8 +111,8 @@
                             <td width="200" bgcolor="#999999"><div class="isi_tabel"><strong></strong><strong>Cara Pembayaran<span class="required_star">*</span></strong></div></td>
                             <td>
                                 <div class="isi_tabel">
-                                     <input type="text" name="tipe_pembayaran" value="<?php echo $pemesanan->tipe_pembayaran; ?>">
-                                     <input type="text" name="tahap_pembayaran" value="<?php echo $pemesanan->tahap_pembayaran; ?>">
+                                    <input type="text" name="tipe_pembayaran" value="<?php echo $pemesanan->tipe_pembayaran; ?>" readonly="readonly">
+                                     <input type="text" name="tahap_pembayaran" value="<?php echo $pemesanan->tahap_pembayaran; ?>" readonly="readonly">
                                 </div>
                             </td>
                         </tr>
@@ -121,7 +121,14 @@
                             <td bgcolor="#999999"><div class="isi_tabel"><strong>Tanggal Rencana</strong></div></td>
                             <td align="right">
                                 <div class="isi_tabel">
-                                    <input type="text" name="tanggal_rencana" id="datepicker1" value="<?php echo $datepicker1; ?>">
+                                    <?php 
+                                    $tanggal = 20;
+                                    $bulan = date('F');
+                                    $tahun = date('Y');
+                                    $tanggal_rencana = "$bulan $tanggal $tahun";
+                                    $d= strtotime($tanggal_rencana);
+                                    ?>
+                                    <input type="text" name="tanggal_rencana" id="datepicker1" value="<?php echo date("Y-m-d", $d); ?>">
                                 </div>
                             </td>
                         </tr>

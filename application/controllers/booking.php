@@ -66,9 +66,10 @@ class Booking extends CI_Controller {
             $this->load->view('booking_siteplan_detail_regular_v', $data);
         }
     }
+
     # 	Menampilkan customer sitplan detail
 
-    public function customer_siteplan_detail($id_siteplan,$id_unit,$id_pemesanan) {
+    public function customer_siteplan_detail($id_siteplan, $id_unit, $id_pemesanan) {
         $this->load->model('siteplan_m');
         $this->load->model('pemesanan_m');
         $this->load->library('user_agent');
@@ -77,8 +78,9 @@ class Booking extends CI_Controller {
         $data['data_siteplan'] = $this->siteplan_m->get_by_id($id_siteplan)->row();
         $data['unit'] = $this->siteplan_m->get_unit_regular($id_siteplan)->result();
         $pemesanan = $this->pemesanan_m->get_by_id($id_pemesanan)->row();
-        $data['nomor_pemesanan'] = $pemesanan->nomor_pemesanan ;
-        $data['id_unit'] = $id_unit ;
+        $data['data_pemesanan'] = $pemesanan;
+        $data['nomor_pemesanan'] = $pemesanan->nomor_pemesanan;
+        $data['id_unit'] = $id_unit;
         if ($this->agent->is_mobile()) {
             $this->load->view('mobile/booking_siteplan_detail_regular_customer_v', $data);
         } else {
@@ -421,37 +423,37 @@ class Booking extends CI_Controller {
             $nup = $this->input->post('nomor_pemesanan');
             if (($nup > 0) && ($nup <= 56)) {
                 if ($diskon_khusus != "") {
-                    $diskon = $diskon_khusus/100;
+                    $diskon = $diskon_khusus / 100;
                 } else {
                     $diskon = 0.10;
                 }
             } elseif (($nup > 56) && ($nup <= 100)) {
                 if ($diskon_khusus != "") {
-                    $diskon = $diskon_khusus/100;
+                    $diskon = $diskon_khusus / 100;
                 } else {
                     $diskon = 0.8;
                 }
             } elseif (($nup > 100) && ($nup <= 150)) {
                 if ($diskon_khusus != "") {
-                    $diskon = $diskon_khusus/100;
+                    $diskon = $diskon_khusus / 100;
                 } else {
                     $diskon = 0.6;
                 }
             } elseif (($nup > 150) && ($nup <= 200)) {
                 if ($diskon_khusus != "") {
-                    $diskon = $diskon_khusus/100;
+                    $diskon = $diskon_khusus / 100;
                 } else {
                     $diskon = 0.4;
                 }
             } elseif (($nup > 200) && ($nup <= 250)) {
                 if ($diskon_khusus != "") {
-                    $diskon = $diskon_khusus/100;
+                    $diskon = $diskon_khusus / 100;
                 } else {
                     $diskon = 0.2;
                 }
             } elseif (($nup > 250) && ($nup <= 300)) {
                 if ($diskon_khusus != "") {
-                    $diskon = $diskon_khusus/100;
+                    $diskon = $diskon_khusus / 100;
                 } else {
                     $diskon = 0;
                 }
@@ -530,22 +532,22 @@ class Booking extends CI_Controller {
 
         redirect("booking/form_kartu_keluarga/" . $this->input->post('id_siteplan') . "/" . $this->input->post('id_unit') . "/" . $id_kartu_keluarga . "/" . $id_pemesanan);
     }
-    
-    public function pindah($nomor_pemesanan,$id_siteplan,$id_unit){        
-       
+
+    public function pindah($nomor_pemesanan, $id_siteplan, $id_unit) {
+
         $this->load->model('unit_m');
         $this->load->model('pemesanan_m');
-        
+
         $data = array("status_transaksi" => "");
-        $this->unit_m->edit($id_unit,$data);
-        
+        $this->unit_m->edit($id_unit, $data);
+
         $this->unit_m->unlock($id_unit);
         $pemesanan = $this->pemesanan_m->delete_by_nup($nomor_pemesanan);
-        
-        
+
+
 
         $this->access_lib->logging("Unlock pemesanan unit : " . $data_unit->kode_unit);
-        
+
 //        if ($data_unit->status_unit == "Promo") {
 //            if ($id_siteplan != '0') {
 //                redirect('booking/siteplan_detail_promo/' . $id_siteplan);
@@ -559,8 +561,8 @@ class Booking extends CI_Controller {
 //                redirect('booking/unit_lainnya_detail_regular');
 //            }
 //        }
-        
-             redirect('booking');
+
+        redirect('booking');
     }
 
     public function cancel_pemesanan($id_unit, $id_siteplan) {
@@ -720,7 +722,8 @@ class Booking extends CI_Controller {
         $data['id_pemesanan'] = $id_pemesanan;
         $data['data_cara_pembayaran'] = $this->cara_pembayaran_m->get_all()->result();
         $data['rencana'] = $this->pemesanan_m->get_rencana($id_pemesanan)->result();
-        $data['jumlah_rencana'] = count($this->pemesanan_m->get_rencana($id_pemesanan)->result());
+        $data['get_rencana'] = ($this->pemesanan_m->get_jumlah_rencana($id_pemesanan)->result());
+        $data['jumlah_rencana'] = count($data['get_rencana']);
 
         $this->load->view('booking_rencana_list_v', $data);
     }
@@ -756,15 +759,16 @@ class Booking extends CI_Controller {
             #ambil data
             $tanggal = $this->input->post('tanggal_rencana');
             $booking_fee = $this->input->post('booking_fee');
-            $harga_jual_inc_ppn = $this->input->post('harga_jual_inc_ppn');
+            $harga_pemesanan = $this->input->post('harga_pemesanan');
             $plafon_kpr = $this->input->post('plafon_kpr');
 
             $keterangan = "UANG MUKA";
             if ($tipe_pembayaran == 'Cash') {
-                $besar_angsuran = ($harga_jual_inc_ppn - $booking_fee) / $tahap_pembayaran;
+                $besar_angsuran = ($harga_pemesanan - 20000000) / $tahap_pembayaran;
             }
             if ($tipe_pembayaran == 'KPR') {
-                $besar_angsuran = ($harga_jual_inc_ppn - $plafon_kpr - $booking_fee) / $tahap_pembayaran;
+                $kpr = harga_pemesanan * 0.4;
+                $besar_angsuran = ($harga_pemesanan - $kpr - 20000000) / $tahap_pembayaran;
             }
 
 
@@ -774,7 +778,7 @@ class Booking extends CI_Controller {
                 if ($i == 0) {
                     if ($tipe_pembayaran == 'Cash') {
                         $keterangan = "ANGSURAN";
-                        $nilai = $besar_angsuran - $booking_fee;
+                        $nilai = $besar_angsuran;
                     }
                     if ($tipe_pembayaran == 'KPR') {
                         $keterangan = "UANG MUKA";

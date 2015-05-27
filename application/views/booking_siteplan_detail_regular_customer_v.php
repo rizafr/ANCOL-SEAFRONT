@@ -84,8 +84,11 @@ $this->load->view('menu_v');
 	<div class="margin_center" style="width:1000px; margin-bottom:20px;">
 		<div class="header_data">Unit Regular</div>
 		<div class="tombol_tambah">	
+			 <a href="<?php echo base_url(); ?>report/regular_detail/<?php echo $data_pemesanan->id_unit . "/" . $data_pemesanan->id_kartu_keluarga . "/" . $data_pemesanan->id_pemesanan; ?>" title="Tampilkan" >
+				<input type="button" value="&laquo; Kembali">
+			</a>
 			<a href="<?php echo base_url(); ?>booking/pindah/<?php echo $nomor_pemesanan?>/<?php echo $data_siteplan->id_siteplan ?>/<?php echo $id_unit ?>" onclick="return confirm('Anda yakin akan pindah unit?');">
-				<input type="button" value="&laquo; Ganti Unit">
+                            <input type="submit" value=" Ganti Unit">
 			</a>
 		</div>
 		

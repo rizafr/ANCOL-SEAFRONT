@@ -395,7 +395,7 @@ class Pemesanan_m extends CI_Model {
     # Menampilkan data pemesanan berdasarkan id_pemesanan
 
     function get_rencana($id_pemesanan) {
-        $query = $this->db->query("	SELECT 		tbl_promo.*, 
+        $query = $this->db->query("	SELECT 
 			tbl_pemesanan.*, 
 			tbl_virtual_account.*,
 			tbl_rencana.*,
@@ -419,6 +419,14 @@ class Pemesanan_m extends CI_Model {
 			WHERE  		tbl_pemesanan.id_pemesanan = '" . $id_pemesanan . "'");
         return $query;
     }
+    
+     function get_jumlah_rencana($id_pemesanan) {
+        $query = $this->db->query("	SELECT t.*, r.*
+			FROM 		tbl_rencana r, tbl_pemesanan t
+			WHERE  		t.id_pemesanan = r.id_pemesanan AND r.id_pemesanan = '" . $id_pemesanan . "'");
+        return $query;
+    }
+
 
     function update_status_cetak($id_pemesanan) {
 
