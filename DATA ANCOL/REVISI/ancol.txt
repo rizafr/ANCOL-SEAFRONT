@@ -1,0 +1,9 @@
+persentasi komisi
+aturan komisi
+data podium - siteplan podium
+data stok unit
+jatuh tempo - berdasarkan tanggal transaksi
+ada masa tenggang yang tidak kena denda
+penentuan model : berdasarkan transaksi atau sesuai masa va
+rumus perhitungan denda
+format ppjb

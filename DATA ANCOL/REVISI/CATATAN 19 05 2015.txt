@@ -1,0 +1,18 @@
+lan : http://169.254.134.192
+wifi : http://192.168.0.103/ -> konek dulu ke coasta villa residence
+
+autentifikasi user | Username   |  Password
+1. Admin
+2. Resepsionis :    Resepsionis | Resepsionis 
+3. Sales       
+4. Kasir      
+
+
+ALUR:
+RESEPIONIS -> KONFIRMASI KEHADIRAN
+-> SALES (PILIH UNIT BARU, KONFIRMASI UNIT YANG LAMA)
+-> KASIR (PEMBAYARAN, KLARIFIKASI PEMBAYARAN MIN 20 JUTA, KUITANSI)
+-> ADMIN / SALES ( PRINT SP)
+
+
+SOLD SETELAH KUITANSI DI CETAK

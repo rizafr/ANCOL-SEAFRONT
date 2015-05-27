@@ -1,0 +1,40 @@
+Sewaktu bermigrasi ke pemrograman  berbasis Web yang paling saya takutkan adalah mendapat project yang mengharuskan  mencetak dalam bentuk STRUK. ternyata benar saya mendapat project  program SPP di salah satu sekolah yang mengharuskan mencetak kedalam struk. Awalnya saya membuatnya dengan Fpdf tetapi ternyata hasil print  jadi kacau dan tidak bisa dibaca.
+dan  akhirnya bisa juga mencetak  langung ke printer dari scrip PHP.Ada beberapa tahan supaya kita bisa cetak langsung ke printer.  
+1. Sharing dahulu printernya
+    misal nama printer LX-300 kemudian sharing dengan nama EPSONLX.
+2. Catat IP Address komputer yang terhubung ke printer 
+3. Buat perintah seperti dibawah ini  dan simpan di web server misal dengan nama cetak.php:
+
+<?php
+$tmpdir = sys_get_temp_dir();   # ambil direktori temporary untuk simpan file.
+$file =  tempnam($tmpdir, 'ctk');  # nama file temporary yang akan dicetak
+$handle = fopen($file, 'w');
+$condensed = Chr(27) . Chr(33) . Chr(4);
+$bold1 = Chr(27) . Chr(69);
+$bold0 = Chr(27) . Chr(70);
+$initialized = chr(27).chr(64);
+$condensed1 = chr(15);
+$condensed0 = chr(18);
+$Data  = $initialized;
+$Data .= $condensed1;
+$Data .= "==========================\n";
+$Data .= "|     ".$bold1."COBA CETAK".$bold0."      |\n";
+$Data .= "==========================\n";
+$Data .= "INI AKAN DI CETAK\n";
+$Data .= "INI AKAN DI CETAK\n";
+$Data .= "INI AKAN DI CETAK\n";
+$Data .= "INI AKAN DI CETAK\n";
+$Data .= "INI AKAN DI CETAK\n";
+$Data .= "We Love PHP Indonesia\n";
+$Data .= "--------------------------\n";
+fwrite($handle, $Data);
+fclose($handle);
+copy($file, "//192.168.1.1/EPSONLX");  # Lakukan cetak
+unlink($file);
+?>
+
+4. Coba panggil file php dari browser, maka printer akan langsung mencetak.dan berhenti  ketika script selesai di cetak. Hal ini berbeda jika kita mengunakan pdf yang  akan terus  menggulung kertas  sampai satu lembar.
+KETERANGAN PROGRAM:
+- mula-mula membuat file temporary
+- mengisi file dangan $data.
+- copy $data ke alamat printer yang di sharing untuk di cetak

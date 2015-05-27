@@ -1,0 +1,8 @@
+bahan pertanyaan rapat:
+1. Aplikasi ini disimpan dimana
+2. akses nya offline atau online -> kalo online harus punya ip public
+3. prosedur pemesannya apakah pada saat customer datang atau sudah di entri terlebih dahulu
+4. perhitungan kpr seperti apa
+5. perhitungan komisi contohnya
+6. mengunci blok yang akan dipesan secara bersama-sama.
+7.nup : 4 digit
