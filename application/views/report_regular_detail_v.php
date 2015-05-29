@@ -28,25 +28,26 @@
                         <td rowspan="2" colspan="2"class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Luas (M2)</div></td>
                         <td width="150" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Harga Pemesanan</div></td>
                         <td width="150" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Harga Cash Keras</div></td>
-                         <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Booking Fee</div></td>
-                           <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">CB 36X</div></td>
+                        <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Booking Fee</div></td>
+                        <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">CB 36X</div></td>
                         <td width=""  rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">CB 48X</div></td>
-                         <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">KPA 36x 40% </div></td>
+                        <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">KPA 24x 40% </div></td>
+                        <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">KPA 36x 40% </div></td>
                     </tr>
                     <tr bgcolor="#FFFFFF">
-                       
-                       
-                       
+
+
+
                     </tr>
                     <tr bgcolor="#FFFFFF">
                         <td width="40" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Tanah</div></td>
                         <td width="40" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Bangunan</div></td>
-                      
+
                     </tr>			
 
                     <tr class="hover">
                         <td><div class="isi_tabel"> <?php echo $data_unit->kategori; ?> </div></td>
-                        <td><div class="isi_tabel nowrap"><?php echo "<font color='blue'>".  $data_unit->kode_unit. "</font>"; ?></div></td>
+                        <td><div class="isi_tabel nowrap"><?php echo "<font color='blue'>" . $data_unit->kode_unit . "</font>"; ?></div></td>
                         <td><div class="isi_tabel"> <?php echo $data_unit->nama_type . " " . $data_unit->posisi; ?> </div></td>
                         <td align="center">
                             <div class="isi_tabel"> 				
@@ -67,6 +68,7 @@
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->harga_jual_inc_ppn), 0); ?> </div></td>
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->tanda_jadi), 0); ?> </div></td>                        
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->kpr_5_tahun), 0); ?> </div></td>
+                        <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->kpr_15_tahun), 0); ?> </div></td>
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->kpr_10_tahun), 0); ?> </div></td>
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->plafon_kpr), 0); ?> </div></td>
                     </tr>
@@ -77,7 +79,7 @@
             <div class="header_data">Data Pemesan</div>
             <div class="tombol_tambah">
                 <a href="<?php echo base_url(); ?>report/regular/0"><input type="button" value="&laquo; Kembali"></a>
-                <a href="<?php echo base_url(); ?>booking/customer_siteplan_detail/<?php echo $siteplan->id_siteplan ?>/<?php  echo $data_unit->id_unit; ?>/<?php  echo $pemesanan->id_pemesanan; ?>"> <input type="button" value="Verifikasi Unit"></a>
+                <a href="<?php echo base_url(); ?>booking/customer_siteplan_detail/<?php echo $siteplan->id_siteplan ?>/<?php echo $data_unit->id_unit; ?>/<?php echo $pemesanan->id_pemesanan; ?>"> <input type="button" value="Verifikasi Unit"></a>
                 <a href="<?php echo base_url(); ?>booking/rencana_list/<?php echo $id_unit . "/" . $id_pemesanan; ?>"><input type="button" value="Rencana"></a>
 
 <!--<a href="<?php echo base_url(); ?>booking/print_form/0/<?php echo $id_unit . "/" . $id_kartu_keluarga . "/" . $id_pemesanan; ?>" target="_blank"><input type="button" value="Print &#9113;"></a>-->

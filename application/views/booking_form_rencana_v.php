@@ -28,25 +28,26 @@
                         <td rowspan="2" colspan="2"class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Luas (M2)</div></td>
                         <td width="150" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Harga Pemesanan</div></td>
                         <td width="150" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Harga Cash Keras</div></td>
-                         <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Booking Fee</div></td>
-                           <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">CB 36X</div></td>
+                        <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Booking Fee</div></td>
+                        <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">CB 36X</div></td>
                         <td width=""  rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">CB 48X</div></td>
-                         <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">KPA 36x 40% </div></td>
+                        <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">KPA 24x 40% </div></td>
+                        <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">KPA 36x 40% </div></td>
                     </tr>
                     <tr bgcolor="#FFFFFF">
-                       
-                       
-                       
+
+
+
                     </tr>
                     <tr bgcolor="#FFFFFF">
                         <td width="40" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Tanah</div></td>
                         <td width="40" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Bangunan</div></td>
-                      
+
                     </tr>			
 
                     <tr class="hover">
                         <td><div class="isi_tabel"> <?php echo $data_unit->kategori; ?> </div></td>
-                        <td><div class="isi_tabel nowrap"><?php echo "<font color='blue'>".  $data_unit->kode_unit. "</font>"; ?></div></td>
+                        <td><div class="isi_tabel nowrap"><?php echo "<font color='blue'>" . $data_unit->kode_unit . "</font>"; ?></div></td>
                         <td><div class="isi_tabel"> <?php echo $data_unit->nama_type . " " . $data_unit->posisi; ?> </div></td>
                         <td align="center">
                             <div class="isi_tabel"> 				
@@ -67,6 +68,7 @@
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->harga_jual_inc_ppn), 0); ?> </div></td>
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->tanda_jadi), 0); ?> </div></td>                        
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->kpr_5_tahun), 0); ?> </div></td>
+                        <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->kpr_15_tahun), 0); ?> </div></td>
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->kpr_10_tahun), 0); ?> </div></td>
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->plafon_kpr), 0); ?> </div></td>
                     </tr>
@@ -112,7 +114,7 @@
                             <td>
                                 <div class="isi_tabel">
                                     <input type="text" name="tipe_pembayaran" value="<?php echo $pemesanan->tipe_pembayaran; ?>" readonly="readonly">
-                                     <input type="text" name="tahap_pembayaran" value="<?php echo $pemesanan->tahap_pembayaran; ?>" readonly="readonly">
+                                    <input type="text" name="tahap_pembayaran" value="<?php echo $pemesanan->tahap_pembayaran; ?>" readonly="readonly">
                                 </div>
                             </td>
                         </tr>
@@ -121,13 +123,27 @@
                             <td bgcolor="#999999"><div class="isi_tabel"><strong>Tanggal Rencana</strong></div></td>
                             <td align="right">
                                 <div class="isi_tabel">
-                                    <?php 
-                                    $tanggal = 20;
-                                    $bulan = date('F');
+                                    <?php
+                                    $tanggal = 15;                                  
                                     $tahun = date('Y');
-                                    $tanggal_rencana = "$bulan $tanggal $tahun";
-                                    $d= strtotime($tanggal_rencana);
+                                    $tanggal_sekarang = date('d');
+                                    
+                                    if ($tanggal_sekarang > $tanggal) {
+                                        $tambah_tanggal = mktime(0, 0, 0, date('m') + 1); // nambah 1 bulan dari tanggal sekarang
+                                        $tambah = date('Y-m-d', $tambah_tanggal);
+                                        $array1 = explode("-", $tambah);
+                                       
+                                        $bulan = $array1[1];
+                                         $bulan = date('F',mktime(0,0,0,$bulan,10));
+                                        $tanggal_rencana = "$bulan $tanggal $tahun";
+                                    } else {
+                                          $bulan = date('F');
+                                        $tanggal_rencana = "$bulan $tanggal $tahun";
+                                    }
+                                    $d = strtotime($tanggal_rencana);
+                                   
                                     ?>
+                                    
                                     <input type="text" name="tanggal_rencana" id="datepicker1" value="<?php echo date("Y-m-d", $d); ?>">
                                 </div>
                             </td>

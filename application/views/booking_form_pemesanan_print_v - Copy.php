@@ -282,7 +282,7 @@
                 echo $tipe . " " . $pemesanan->tahap_pembayaran . " X";
                 ?>
             </a>
-            <table class="kata_profil pad_kpr ttd" id = 'table_kpr' width="55%" cellspacing="0" >
+            <table class="kata_profil pad_kpr ttd" id = 'table_kpr' width="55%" cellspacing="0">
                 <tr>
                     <td width="15%" class="border_table">Keterangan</td>
                     <td width="15%" class="border_table">Tanggal JT</td>
@@ -290,12 +290,12 @@
                     <td width="10%" class="kata_profil">Catatan :</td>
                 </tr>
                   <tr bgcolor="#FFFFFF">
-                            <td class="border_table"> Booking Fee </td>
-                            <td class="border_table"> 30 Mei 2015 </td>
-                            <td class="border_table"> 20.000.000 </td>
+                            <td><div class="border_table"> Booking Fee </div></td>
+                            <td><div class="border_table"> 30 Mei 2015 </div></td>
+                            <td><div class="border_table"> 20.000.000 </div></td>
                         </tr>
                 <?php
-                
+                for ($i = 0; $i < 48; $i++) {
                     if ($jumlah_rencana > 0) {
                         $i = 1;
                         $total = $pemesanan->booking_fee;
@@ -303,9 +303,9 @@
                             ?>
 
                             <tr bgcolor="#FFFFFF">
-                                <td class="border_table"> Angsuran-<?php echo $i; ?> </div></td>
-                                <td class="border_table"> <?php echo ubah_format_tanggal($data_rencana->tanggal_rencana, "") ?></td>
-                                <td class="border_table"> <?php echo number_format(round($data_rencana->nilai), 0); ?> </td>
+                                <td><div class="border_table"> Angsuran-<?php echo $i; ?> </div></td>
+                                <td><div class="border_table"> <?php echo ubah_format_tanggal($data_rencana->tanggal_rencana, "H:i:s") ?> </div></td>
+                                <td><div class="border_table"> <?php echo number_format(round($data_rencana->nilai), 0); ?> </div></td>
                                 <?php $total += $data_rencana->nilai; ?>
                             </tr>
 
@@ -314,11 +314,12 @@
                         }
                         ?>
                         <tr bgcolor="#FFFFFF">
-                            <td colspan="2" class="border_table"> Total</td>
-                            <td class="border_table"> <?php echo number_format(round($total), 0); ?> </td>
+                            <td><div class="border_table"> Total</div></td>
+                            <td><div class="border_table">  </div></td>
+                            <td><div class="border_table"> <?php echo number_format(round($total), 0); ?> </div></td>
                         </tr>
                     <?php }
-                  
+                    }
                     
                 ?>
                 <tr>

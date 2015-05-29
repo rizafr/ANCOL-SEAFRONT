@@ -172,7 +172,7 @@ class Report extends CI_Controller {
         
         //hitung diskon
             
-            print_r($nup);
+           
             if (($nup > 0) && ($nup <= 56)) {
                 if ($diskon_khusus  > 0) {
                     $diskon = $diskon_khusus/100;
@@ -220,6 +220,8 @@ class Report extends CI_Controller {
                 $harga_jual = $data_unit->kpr_10_tahun;
             } elseif (($tahap_pembayaran == "36") && ($tipe_pembayaran == "KPR")) {
                 $harga_jual = $data_unit->plafon_kpr;
+            } elseif (($tahap_pembayaran == "24") && ($tipe_pembayaran == "KPR")) {
+                $harga_jual = $data_unit->kpr_15_tahun;
             }
 
             $harga = $harga_jual - ($harga_jual * $diskon);

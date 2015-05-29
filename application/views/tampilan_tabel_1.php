@@ -34,6 +34,7 @@
 		line-height: 10px  !important;  
 		font-size: 14px;
 		border: 1px solid !important;}
+
 	</style>
 </head>
 <body>   
@@ -41,61 +42,139 @@
 	<!-- will be used to show any messages -->
 	
 	<?php
+		$data_sort =  array();
+		for($a=0;$a<=36;$a++){
+			$data_sort[$a]= array();
+			for($b=0;$b<=22;$b++){
+				$data_sort[$a][$b] = 'x';
+			}
+		}
+
+		$limitPerLine = 22;
+		$currentData = 0;
 		
 		foreach($unit as $data_unit)
-		{
+		{								
 			$kode_unit = explode("/",$data_unit->kode_unit );
 			$kode_unit_split = explode("-",$kode_unit[1] );
 			$lantai = $kode_unit_split[0];
-			$jumlah_lantai = count($unit);
+			$unit = $kode_unit_split[1];
+			if(empty($data_unit->status_transaksi)){
+				$data_sort[$lantai][$unit] = 'Avail';
+			}
+			else {
+				$data_sort[$lantai][$unit] = $data_unit->status_transaksi;
+			}
 		}
 	?>
-	
-	
-	<table class="table" >					
-		
-		<tbody >
-			<?php
-				$limitPerLine = 22;
-				$currentData = 0;
-				foreach($unit as $data_unit)
-				{								
-					++$currentData;
-					
-					if($currentData == 1) { ?>
-					<tr>
-					<?php  }
-						$kode_unit = explode("/",$data_unit->kode_unit );
-						$kode_unit_split = explode("-",$kode_unit[1] );
-						$lantai = $kode_unit_split[0];
-					?>
-					<td <?php 
-						if($data_unit->status_transaksi == "Booked"){
-							echo "class='danger'";
-							}elseif($data_unit->status_transaksi == "Sold"){
-							echo "class='danger'";
-							}else{
-							echo "class='success'";
+<div class="row">
+	<div class="col-md-6">
+		<table class="table" >					
+			<tbody >
+				<?php
+					echo "<tr><td class = 'active' colspan='10'>Ancol View</td>";
+					echo "<tr><td class = 'active'>LT</td>";
+
+					for($b=22;$b>=1;$b-=2){
+							if($b==13||$b==14||$b==4){
+								continue;
 							}
-						?>>
-						<strong><?php echo  $data_unit->kode_unit?></strong>
-				</td>
-				
-				
-				<?php if($currentData == $limitPerLine) {
-					$currentData = 0;
+							echo "<td class='active'>$b</td>";
+					}
+
+					for($a=36;$a>0;$a--){
+						if($a==13||$a==4||$a==14||$a==24||$a==34){
+							continue;
+						}
+						echo "<tr><td class='active'>$a</td>";
+						for($b=22;$b>=1;$b-=2){
+							if($b==13||$b==14||$b==4){
+								continue;
+							}
+							if($data_sort[$a][$b]=='Sold'){
+								echo "<td class = 'danger'>A/$a-$b</td>";	
+								}
+							else if($data_sort[$a][$b]=='Avail'){
+								echo "<td class = 'success'>A/$a-$b</td>";
+							}
+							else if($data_sort[$a][$b]=='Booked'){
+								echo "<td class = 'danger'>A/$a-$b</td>";
+							}
+							else{
+								if($a>=2){
+									if($data_sort[$a-1][$b]=='x'){
+										echo "<td class = 'active'>Void</td>";
+									}
+									else{
+										echo "<td class = 'active'>Garden</td>";
+									}
+								}
+								else{
+									echo "<td class = 'active'>Garden</td>";
+								}
+							}
+						}
+						echo "</tr>";
+					}
 				?>
-				</tr>
-				<?php }
-			}
-		?>	
-		
-		
-	</tbody>
-	
-</table>
+			</tbody>
+		</table>	
+	</div>
 
+	<div class="col-md-6">
+		<table class="table" >					
+			<tbody >
+				<?php
+					echo "<tr><td class = 'active' colspan='11'>Sea View</td>";
+					echo "<tr><td class = 'active'>LT</td>";
 
+					for($b=21;$b>=1;$b-=2){
+							if($b==13){
+								continue;
+							}
+							echo "<td class='active'>$b</td>";
+					}
+
+					for($a=36;$a>0;$a--){
+						if($a==13||$a==14||$a==4||$a==24||$a==34){
+							continue;
+						}
+						echo "<tr>
+								<td class='active'>$a</td>";
+						for($b=21;$b>=1;$b-=2){
+							if($b==13||$b==14||$b==4){
+								continue;
+							}
+							if($data_sort[$a][$b]=='Sold'){
+								echo "<td class = 'danger'>A/$a-$b</td>";	
+								}
+							else if($data_sort[$a][$b]=='Avail'){
+								echo "<td class = 'success'>A/$a-$b</td>";
+							}
+							else if($data_sort[$a][$b]=='Booked'){
+								echo "<td class = 'danger'>A/$a-$b</td>";
+							}
+							else{
+								if($a>=2){
+									if($data_sort[$a-1][$b]=='x'){
+										echo "<td class = 'active'>Void</td>";
+									}
+									else{
+										echo "<td class = 'active'>Garden</td>";
+									}
+								}
+								else{
+									echo "<td class = 'active'>Garden</td>";
+								}
+							}
+						}
+						echo "</tr>";
+					}
+				?>
+			</tbody>
+		</table>
+	</div>
+</div>
 
 <!--<script src="<?php echo base_url(); ?>files/antrian/jquery.js"></script>-->
 <script>

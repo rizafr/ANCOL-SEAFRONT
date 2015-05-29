@@ -143,10 +143,10 @@ if ($status == "Promo") {
 <body>
 
     <?php
-# Load profile
+    # Load profile
     $this->load->view('top_profile_v');
 
-# Load menu dashboard
+    # Load menu dashboard
     $this->load->view('menu_v');
     ?>
 
@@ -155,36 +155,35 @@ if ($status == "Promo") {
         <div class="margin_center" style="width:1000px">
             <div class="header_data">Data Unit Dipesan</div>	
             <div class="frame_tabel radius transparent">	
-                <table style="width:100%;" cellspacing="1px" cellpadding="2px" bgcolor="#CCCCCC">
+                <table width="100%" cellspacing="1px" cellpadding="2px" bgcolor="#CCCCCC">
                     <tr bgcolor="#FFFFFF">
-                        <td rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Kategori</div></td>
-                        <td rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Cluster</div></td>
-                        <td rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Unit</div></td>
-                        <td rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Type</div></td>
-                        <td rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Status</div></td>
-                        <td rowspan="2" colspan="2"class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Luas (m&sup2;)</div></td>
-                        <td rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Harga Jual Incl. PPN</div></td>
-                        <td colspan="6" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">KPR (Asumsi Suku Bunga <?php echo $data_unit->suku_bunga; ?>%)</div></td>
+                        <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Kategori</div></td>
+                        <td width="100" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Unit</div></td>
+                        <td width="100" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Hadap</div></td>
+                        <td width="60" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Status</div></td>
+                        <td rowspan="2" colspan="2"class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Luas (M2)</div></td>
+                        <td width="150" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Harga Pemesanan</div></td>
+                        <td width="150" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Harga Cash Keras</div></td>
+                        <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Booking Fee</div></td>
+                        <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">CB 36X</div></td>
+                        <td width=""  rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">CB 48X</div></td>
+                        <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">KPA 24x 40% </div></td>
+                        <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">KPA 36x 40% </div></td>
                     </tr>
                     <tr bgcolor="#FFFFFF">
-                        <td rowspan="2" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Tanda Jadi</div></td>
-                        <td rowspan="2" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Uang Muka</div></td>
-                        <td rowspan="2" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Plafon KPR</div></td>
-                        <td colspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Angsuran</div></td>
+
+
+
                     </tr>
                     <tr bgcolor="#FFFFFF">
-                        <td class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Tnh</div></td>
-                        <td class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Bang</div></td>
-                        <td class="header_tabel_cust"><div style="color:#FFF; text-align: center;">5 Tahun</div></td>
-                        <td class="header_tabel_cust"><div style="color:#FFF; text-align: center;">10 Tahun</div></td>
-                        <td class="header_tabel_cust"><div style="color:#FFF; text-align: center;">15 Tahun</div></td>
-                    </tr>
-                    </thead>		
+                        <td width="40" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Tanah</div></td>
+                        <td width="40" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Bangunan</div></td>
+
+                    </tr>			
 
                     <tr class="hover">
                         <td><div class="isi_tabel"> <?php echo $data_unit->kategori; ?> </div></td>
-                        <td><div class="isi_tabel"> <?php echo $data_unit->nama_cluster; ?> </div></td>
-                        <td><div class="isi_tabel nowrap"> <?php echo $data_unit->kode_unit; ?> </div></td>
+                        <td><div class="isi_tabel nowrap"><?php echo "<font color='blue'>" . $data_unit->kode_unit . "</font>"; ?></div></td>
                         <td><div class="isi_tabel"> <?php echo $data_unit->nama_type . " " . $data_unit->posisi; ?> </div></td>
                         <td align="center">
                             <div class="isi_tabel"> 				
@@ -201,18 +200,17 @@ if ($status == "Promo") {
                         </td>
                         <td align="center"><div class="isi_tabel"> <?php echo $data_unit->luas_tanah; ?> </div></td>
                         <td align="center"><div class="isi_tabel"> <?php echo $data_unit->luas_bangunan; ?> </div></td>
+                        <td align="right"><div class="isi_tabel"> <?php echo number_format(round($pemesanan->harga_jual), 0); ?> </div></td>
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->harga_jual_inc_ppn), 0); ?> </div></td>
-                        <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->tanda_jadi), 0); ?> </div></td>
-                        <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->uang_muka), 0); ?> </div></td>
-                        <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->plafon_kpr), 0); ?> </div></td>
+                        <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->tanda_jadi), 0); ?> </div></td>                        
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->kpr_5_tahun), 0); ?> </div></td>
-                        <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->kpr_10_tahun), 0); ?> </div></td>
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->kpr_15_tahun), 0); ?> </div></td>
+                        <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->kpr_10_tahun), 0); ?> </div></td>
+                        <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->plafon_kpr), 0); ?> </div></td>
                     </tr>
-
-<?php
-if ($status == "Promo") {
-    ?>
+                    <?php
+                    if ($status == "Promo") {
+                        ?>
 
                         <tr class="hover">
                             <td colspan="7" class="header_tabel_cust">
@@ -247,14 +245,14 @@ if ($status == "Promo") {
                             </td>
                             <td colspan="13" align="left">
                                 <div class="isi_tabel"> 
-    <?php echo "<strong>" . $nama_promo . "</strong><br />" . $deskripsi; ?>
+                                    <?php echo "<strong>" . $nama_promo . "</strong><br />" . $deskripsi; ?>
                                 </div>
                             </td>
                         </tr>
 
-                                    <?php
-                                }
-                                ?>
+                        <?php
+                    }
+                    ?>
 
                 </table>
             </div>
@@ -314,11 +312,11 @@ if ($status == "Promo") {
                             <td><div class="isi_tabel">
                                     <select name="status_kawin" id="status_kawin">
                                         <option value="">Pilih Status</option>
-<?php
-$data_status = array("Kawin", "Belum Kawin", "Divorce");
+                                        <?php
+                                        $data_status = array("Kawin", "Belum Kawin", "Divorce");
 
-foreach ($data_status as $status) {
-    ?>
+                                        foreach ($data_status as $status) {
+                                            ?>
 
                                             <option value="<?php echo $status; ?>"><?php echo $status; ?></option>
 
@@ -336,9 +334,9 @@ foreach ($data_status as $status) {
                                     <select name="tanggal_lahir" id="tanggal_lahir">
                                         <option value="">Tanggal</option>
 
-<?php
-for ($i = 1; $i <= 31; $i++) {
-    ?>
+                                        <?php
+                                        for ($i = 1; $i <= 31; $i++) {
+                                            ?>
 
                                             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>									
 
@@ -350,13 +348,13 @@ for ($i = 1; $i <= 31; $i++) {
                                         <select name="bulan_lahir" id="bulan_lahir">
                                             <option value="">Bulan</option>
 
-    <?php
-    $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September",
-        "Oktober", "November", "Desember");
-    $bln_angka = 0;
-    foreach ($bulan as $data_bulan) {
-        $bln_angka++;
-        ?>
+                                            <?php
+                                            $bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September",
+                                                "Oktober", "November", "Desember");
+                                            $bln_angka = 0;
+                                            foreach ($bulan as $data_bulan) {
+                                                $bln_angka++;
+                                                ?>
 
                                                 <option value="<?php echo $bln_angka; ?>"> <?php echo $data_bulan ?> </option>
 
@@ -414,9 +412,9 @@ for ($i = 1; $i <= 31; $i++) {
                                     <td class="header_tabel_cust"><div style="color:#FFF; text-align:center;">&nbsp;</div></td>
                                 </tr>
 
-        <?php
-        foreach ($anggota_keluarga as $data_anggota) {
-            ?>
+                                <?php
+                                foreach ($anggota_keluarga as $data_anggota) {
+                                    ?>
 
                                     <tr bgcolor="#FFFFFF" id="tbl_<?php echo $data_anggota->id_anggota_keluarga; ?>">
                                         <td><div class="isi_tabel"><?php echo $data_anggota->nama_lengkap; ?></div></td>
@@ -427,17 +425,17 @@ for ($i = 1; $i <= 31; $i++) {
                                         <td><div class="isi_tabel"><?php echo $data_anggota->status_nikah; ?></div></td>
                                         <td>
                                             <div class="isi_tabel">
-                                                <a href="#" onClick="javascript:hapus_data_anggota_keluarga(<?php echo $data_anggota->id_anggota_keluarga; ?>);
-                                                        return false;">
+                                               <a href="#" onClick="javascript:hapus_data_anggota_keluarga(<?php echo $data_anggota->id_anggota_keluarga; ?>);
+                                                                                                    return false;">
                                                     <img src="<?php echo base_url(); ?>files/images/delete.png">
                                                 </a>
                                             </div>
                                         </td>
                                     </tr>
 
-            <?php
-        }
-        ?>
+                                    <?php
+                                }
+                                ?>
 
                             </table>
                         </div>

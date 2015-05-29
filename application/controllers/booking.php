@@ -422,37 +422,37 @@ class Booking extends CI_Controller {
             //hitung diskon
             $nup = $this->input->post('nomor_pemesanan');
             if (($nup > 0) && ($nup <= 56)) {
-                if ($diskon_khusus != "") {
+                if (($diskon_khusus != "") || (!empty($diskon_khusus)) || ($diskon > 0)) {
                     $diskon = $diskon_khusus / 100;
                 } else {
                     $diskon = 0.10;
                 }
             } elseif (($nup > 56) && ($nup <= 100)) {
-                if ($diskon_khusus != "") {
+                if (($diskon_khusus != "") || (!empty($diskon_khusus)) || ($diskon > 0)) {
                     $diskon = $diskon_khusus / 100;
                 } else {
                     $diskon = 0.8;
                 }
             } elseif (($nup > 100) && ($nup <= 150)) {
-                if ($diskon_khusus != "") {
+                if (($diskon_khusus != "") || (!empty($diskon_khusus)) || ($diskon > 0)) {
                     $diskon = $diskon_khusus / 100;
                 } else {
                     $diskon = 0.6;
                 }
             } elseif (($nup > 150) && ($nup <= 200)) {
-                if ($diskon_khusus != "") {
+                if (($diskon_khusus != "") || (!empty($diskon_khusus)) || ($diskon > 0)) {
                     $diskon = $diskon_khusus / 100;
                 } else {
                     $diskon = 0.4;
                 }
             } elseif (($nup > 200) && ($nup <= 250)) {
-                if ($diskon_khusus != "") {
+                if (($diskon_khusus != "") || (!empty($diskon_khusus)) || ($diskon > 0)) {
                     $diskon = $diskon_khusus / 100;
                 } else {
                     $diskon = 0.2;
                 }
             } elseif (($nup > 250) && ($nup <= 300)) {
-                if ($diskon_khusus != "") {
+                if (($diskon_khusus != "") || (!empty($diskon_khusus)) || ($diskon > 0)) {
                     $diskon = $diskon_khusus / 100;
                 } else {
                     $diskon = 0;
@@ -468,6 +468,9 @@ class Booking extends CI_Controller {
                 $harga_jual = $data_unit->kpr_10_tahun;
             } elseif (($tahap_pembayaran == "36") && ($tipe_pembayaran == "KPR")) {
                 $harga_jual = $data_unit->plafon_kpr;
+            
+            } elseif (($tahap_pembayaran == "24") && ($tipe_pembayaran == "KPR")) {
+                $harga_jual = $data_unit->kpr_15_tahun;
             }
 
             $harga = $harga_jual - ($harga_jual * $diskon);
@@ -1089,6 +1092,11 @@ class Booking extends CI_Controller {
         $data['id_pemesanan'] = $id_pemesanan;
         $data['rencana'] = $this->pemesanan_m->get_rencana($id_pemesanan)->result();
         $status_cetak = $this->pemesanan_m->update_status_cetak($id_pemesanan);
+        
+        $data['rencana'] = $this->pemesanan_m->get_rencana($id_pemesanan)->result();
+        $data['get_rencana'] = ($this->pemesanan_m->get_jumlah_rencana($id_pemesanan)->result());
+        $data['jumlah_rencana'] = count($data['get_rencana']);
+
 
         $this->load->view('booking_form_pemesanan_print_v', $data);
     }

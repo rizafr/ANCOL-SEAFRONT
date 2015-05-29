@@ -37,6 +37,7 @@
                 }
                 .kata{
                     font-size: 11px;
+                    line-height: 20px;
                 }
 
                 .garis_bawah{
@@ -141,7 +142,7 @@
                     <td class="kolom kolom_bawah">1</td>
                     <td class="kolom kolom_bawah">Uang Tunai</td>
                     <td class="kolom kolom_bawah"></td>
-                    <td class="kolom kolom_bawah">27 Mei 2015</td>
+                    <td class="kolom kolom_bawah">30 Mei 2015</td>
                     <td class="kolom kolom_bawah">20.000.000,-</td>
                 </tr>
             </table>

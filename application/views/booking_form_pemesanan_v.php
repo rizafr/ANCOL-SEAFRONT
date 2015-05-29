@@ -1,4 +1,5 @@
 <?php echo $header; ?>
+<?php include "fungsi_tanggal.php"; ?>
 
 
 <script type="text/javascript">
@@ -290,9 +291,10 @@ if ($status == "Promo") {
             var kpr_5_tahun = PMT(suku_bunga / 12, 60, -plafon_kpr);
             var kpr_10_tahun = PMT(suku_bunga / 12, 120, -plafon_kpr);
             var kpr_15_tahun = PMT(suku_bunga / 12, 180, -plafon_kpr);
+            
+            
 
-
-
+            
             $("#harga_jual_inc_ppn").html(fm(harga_jual_inc_ppn));
             $("#tanda_jadi").html(fm(tanda_jadi));
             $("#tanda_jadi_real").val(tanda_jadi);
@@ -355,7 +357,7 @@ if ($status == "Promo") {
         <div class="margin_center" style="width:1000px">
             <div class="header_data">Data Unit Dipesan</div>	
             <div class="frame_tabel radius transparent">	
-                <table width="100%" cellspacing="1px" cellpadding="2px" bgcolor="#CCCCCC">
+               <table width="100%" cellspacing="1px" cellpadding="2px" bgcolor="#CCCCCC">
                     <tr bgcolor="#FFFFFF">
                         <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Kategori</div></td>
                         <td width="100" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Unit</div></td>
@@ -364,25 +366,26 @@ if ($status == "Promo") {
                         <td rowspan="2" colspan="2"class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Luas (M2)</div></td>
                         <td width="150" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Harga Pemesanan</div></td>
                         <td width="150" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align:center;">Harga Cash Keras</div></td>
-                         <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Booking Fee</div></td>
-                           <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">CB 36X</div></td>
+                        <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Booking Fee</div></td>
+                        <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">CB 36X</div></td>
                         <td width=""  rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">CB 48X</div></td>
-                         <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">KPA 36x 40% </div></td>
+                        <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">KPA 24x 40% </div></td>
+                        <td width="70" rowspan="3" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">KPA 36x 40% </div></td>
                     </tr>
                     <tr bgcolor="#FFFFFF">
-                       
-                       
-                       
+
+
+
                     </tr>
                     <tr bgcolor="#FFFFFF">
                         <td width="40" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Tanah</div></td>
                         <td width="40" class="header_tabel_cust"><div style="color:#FFF; text-align: center;">Bangunan</div></td>
-                      
+
                     </tr>			
 
                     <tr class="hover">
                         <td><div class="isi_tabel"> <?php echo $data_unit->kategori; ?> </div></td>
-                        <td><div class="isi_tabel nowrap"><?php echo "<font color='blue'>".  $data_unit->kode_unit. "</font>"; ?></div></td>
+                        <td><div class="isi_tabel nowrap"><?php echo "<font color='blue'>" . $data_unit->kode_unit . "</font>"; ?></div></td>
                         <td><div class="isi_tabel"> <?php echo $data_unit->nama_type . " " . $data_unit->posisi; ?> </div></td>
                         <td align="center">
                             <div class="isi_tabel"> 				
@@ -403,9 +406,11 @@ if ($status == "Promo") {
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->harga_jual_inc_ppn), 0); ?> </div></td>
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->tanda_jadi), 0); ?> </div></td>                        
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->kpr_5_tahun), 0); ?> </div></td>
+                        <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->kpr_15_tahun), 0); ?> </div></td>
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->kpr_10_tahun), 0); ?> </div></td>
                         <td align="right"><div class="isi_tabel"> <?php echo number_format(round($data_unit->plafon_kpr), 0); ?> </div></td>
                     </tr>
+                </table>
 
                     <?php
                     if ($status == "Promo") {
