@@ -676,7 +676,7 @@ if ($status == "Promo") {
                             <td bgcolor="#999999"><div class="isi_tabel"><strong>Diskon Khusus</strong></div></td>
                             <td>
                                 <div class="isi_tabel">
-                                    <input type="text" name="diskon_khusus" id="diskon_khusus" size="20" value="" style="text-align:right;">
+                                    <input type="text" name="diskon_khusus" id="diskon_khusus" size="20" value="" style="text-align:right;" autocomplete="off">
                                 </div>
                             </td>
                         </tr>
@@ -685,7 +685,7 @@ if ($status == "Promo") {
                             <td bgcolor="#999999"><div class="isi_tabel"><strong>Otoritas Diskon</strong></div></td>
                             <td>
                                 <div class="isi_tabel">
-                                    <input type="password" name="otoritas_diskon" id="otoritas_diskon" size="20" value="" style="text-align:right;">
+                                    <input type="password" name="otoritas_diskon" id="otoritas_diskon" size="20" value="" style="text-align:right;" autocomplete="off">
                                 </div>
                             </td>
                         </tr>

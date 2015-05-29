@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2015 at 02:32 AM
+-- Generation Time: May 29, 2015 at 03:20 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -665,8 +665,8 @@ CREATE TABLE IF NOT EXISTS `tbl_sessions` (
 --
 
 INSERT INTO `tbl_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('7827276a5884bea1f74fee25e957cddc', '192.168.239.51', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36', 1432859355, 'a:9:{s:9:"user_data";s:0:"";s:7:"id_user";s:1:"1";s:12:"nama_lengkap";s:13:"Dito Fityanto";s:8:"username";s:13:"Administrator";s:9:"hash_data";s:32:"b4cdec13f2177201dd7b4a8feb04c705";s:5:"level";s:13:"Administrator";s:2:"sm";s:1:"N";s:8:"id_agent";s:1:"1";s:16:"status_transaksi";s:1:"1";}'),
-('85728465540c098844a33a9a380e2a03', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36', 1432859401, 'a:9:{s:9:"user_data";s:0:"";s:7:"id_user";s:1:"1";s:12:"nama_lengkap";s:13:"Dito Fityanto";s:8:"username";s:13:"Administrator";s:9:"hash_data";s:32:"b4cdec13f2177201dd7b4a8feb04c705";s:5:"level";s:13:"Administrator";s:2:"sm";s:1:"N";s:8:"id_agent";s:1:"1";s:16:"status_transaksi";s:1:"1";}');
+('6123f7bf8a837553cad477a49a789f32', '192.168.239.51', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36', 1432861483, 'a:9:{s:9:"user_data";s:0:"";s:7:"id_user";s:1:"1";s:12:"nama_lengkap";s:13:"Dito Fityanto";s:8:"username";s:13:"Administrator";s:9:"hash_data";s:32:"b4cdec13f2177201dd7b4a8feb04c705";s:5:"level";s:13:"Administrator";s:2:"sm";s:1:"N";s:8:"id_agent";s:1:"1";s:16:"status_transaksi";s:1:"1";}'),
+('e0d754c4aa6b2389293681416f09fc18', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36', 1432862139, 'a:9:{s:9:"user_data";s:0:"";s:7:"id_user";s:1:"1";s:12:"nama_lengkap";s:13:"Dito Fityanto";s:8:"username";s:13:"Administrator";s:9:"hash_data";s:32:"b4cdec13f2177201dd7b4a8feb04c705";s:5:"level";s:13:"Administrator";s:2:"sm";s:1:"N";s:8:"id_agent";s:1:"1";s:16:"status_transaksi";s:1:"1";}');
 
 -- --------------------------------------------------------
 
@@ -754,12 +754,7 @@ INSERT INTO `tbl_siteplan` (`id_siteplan`, `id_cluster`, `nama_siteplan`, `image
 (66, 2, 'TOWER B FLOOR 33', '24_TOWER_A_FLOOR_32_-_33_-_35.jpg', 'Aktif'),
 (67, 2, 'TOWER B FLOOR 34', '24_TOWER_A_FLOOR_32_-_33_-_35.jpg', 'Aktif'),
 (68, 2, 'TOWER B FLOOR 35', '24_TOWER_A_FLOOR_32_-_33_-_35.jpg', 'Aktif'),
-(69, 2, 'TOWER B FLOOR 36', '25_TOWER_A_FLOOR_36.jpg', 'Aktif'),
-(70, 1, 'TOWER A FLOOR 13', '70_TOWER_A_FLOOR_13.jpg', 'Aktif'),
-(71, 1, 'TOWER A FLOOR 14', '71_TOWER_A_FLOOR_14.jpg', 'Aktif'),
-(72, 1, 'TOWER A FLOOR 24', '72_TOWER_A_FLOOR_24.jpg', 'Aktif'),
-(73, 1, 'TOWER A FLOOR 34', '73_TOWER_A_FLOOR_34.jpg', 'Aktif'),
-(74, 1, 'TOWER A FLOOR 40', '74_TOWER_A_FLOOR_40.jpg', 'Aktif');
+(69, 2, 'TOWER B FLOOR 36', '25_TOWER_A_FLOOR_36.jpg', 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -1078,7 +1073,7 @@ INSERT INTO `tbl_unit` (`id_unit`, `id_promo`, `id_cluster`, `id_type`, `posisi`
 (181, 0, 1, 41, 'STANDAR', 'A/12-8', 'CONDO', 60.00, 52.00, 0, 518592, 0.00, 0.00, 0, 26966806, 0, 1210743000, 0.93, NULL, 20000000, 0.000000000, 0, 0.000000000, 1630530000, 1448872000, 1538235000, 1535805000, 7.25, 'Marketable', 'Sold', '2015-05-26 00:00:00', 'HM', 0, '0000-00-00 00:00:00'),
 (182, 0, 1, 40, 'STANDAR', 'A/12-9', 'CONDO', 101.00, 90.00, 0, 299631, 0.00, 0.00, 0, 26966806, 0, 2388437000, 1.06, NULL, 20000000, 0.000000000, 0, 0.000000000, 3216552000, 2858196000, 3034483000, 3029688000, 7.25, 'Marketable', 'Sold', '2015-05-26 00:00:00', 'HM', 0, '0000-00-00 00:00:00'),
 (183, 0, 1, 41, 'STANDAR', 'A/12-10', 'CONDO', 74.00, 63.00, 0, 428045, 0.00, 0.00, 0, 26966806, 0, 1466861000, 0.93, NULL, 20000000, 0.000000000, 0, 0.000000000, 1975449000, 1755364000, 1863631000, 1860686000, 7.25, 'Marketable', '', '2015-05-26 00:00:00', 'HM', 0, '0000-00-00 00:00:00'),
-(184, 0, 1, 40, 'STANDAR', 'A/12-11', 'CONDO', 101.00, 90.00, 0, 299631, 0.00, 0.00, 0, 26966806, 0, 2388437000, 1.06, NULL, 20000000, 0.000000000, 0, 0.000000000, 3216552000, 2858196000, 3034483000, 3029688000, 7.25, 'Marketable', '', '2015-05-26 00:00:00', 'HM', 1, '2015-05-29 07:28:20'),
+(184, 0, 1, 40, 'STANDAR', 'A/12-11', 'CONDO', 101.00, 90.00, 0, 299631, 0.00, 0.00, 0, 26966806, 0, 2388437000, 1.06, NULL, 20000000, 0.000000000, 0, 0.000000000, 3216552000, 2858196000, 3034483000, 3029688000, 7.25, 'Marketable', '', '2015-05-26 00:00:00', 'HM', 0, '0000-00-00 00:00:00'),
 (185, 0, 1, 41, 'STANDAR', 'A/12-12', 'CONDO', 67.00, 57.00, 0, 473102, 0.00, 0.00, 0, 26966806, 0, 1327160000, 0.93, NULL, 20000000, 0.000000000, 0, 0.000000000, 1787311000, 1588187000, 1686142000, 1683479000, 7.25, 'Marketable', '', '2015-05-26 00:00:00', 'HM', 0, '0000-00-00 00:00:00'),
 (186, 0, 1, 40, 'STANDAR', 'A/12-15', 'CONDO', 101.00, 90.00, 0, 299631, 0.00, 0.00, 0, 26966806, 0, 2388437000, 1.06, NULL, 20000000, 0.000000000, 0, 0.000000000, 3216552000, 2858196000, 3034483000, 3029688000, 7.25, 'Marketable', '', '2015-05-26 00:00:00', 'HM', 0, '0000-00-00 00:00:00'),
 (187, 0, 1, 41, 'STANDAR', 'A/12-16', 'CONDO', 71.00, 63.00, 0, 428045, 0.00, 0.00, 0, 26966806, 0, 1466861000, 0.93, NULL, 20000000, 0.000000000, 0, 0.000000000, 1975449000, 1755364000, 1863631000, 1860686000, 7.25, 'Marketable', '', '2015-05-26 00:00:00', 'HM', 0, '0000-00-00 00:00:00'),
@@ -2231,7 +2226,7 @@ CREATE TABLE IF NOT EXISTS `tbl_user_log` (
   `ip_address` varchar(50) DEFAULT NULL,
   `tanggal_posting` datetime DEFAULT NULL,
   PRIMARY KEY (`id_logs`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `tbl_user_log`
@@ -2250,7 +2245,19 @@ INSERT INTO `tbl_user_log` (`id_logs`, `id_user`, `username`, `keterangan`, `ip_
 (10, 1, 'Administrator', 'Login', '127.0.0.1', '2015-05-29 06:59:18'),
 (11, 1, 'Administrator', 'Tambah data cara pembayaran : KPR 24x', '127.0.0.1', '2015-05-29 06:59:29'),
 (12, 1, 'Administrator', 'Login', '192.168.239.51', '2015-05-29 07:25:48'),
-(13, 1, 'Administrator', 'Lock pemesanan unit : A/12-11', '192.168.239.51', '2015-05-29 07:28:20');
+(13, 1, 'Administrator', 'Lock pemesanan unit : A/12-11', '192.168.239.51', '2015-05-29 07:28:20'),
+(14, 1, 'Administrator', 'Lock pemesanan unit : A/1-15', '127.0.0.1', '2015-05-29 08:12:16'),
+(15, 1, 'Administrator', 'Unlock pemesanan unit : A/1-15', '127.0.0.1', '2015-05-29 08:12:33'),
+(16, 1, 'Administrator', 'Lock pemesanan unit : A/1-15', '127.0.0.1', '2015-05-29 08:12:39'),
+(17, 1, 'Administrator', 'Lock pemesanan unit : A/1-11', '127.0.0.1', '2015-05-29 08:12:49'),
+(18, 1, 'Administrator', 'Unlock pemesanan unit : A/1-11', '127.0.0.1', '2015-05-29 08:13:16'),
+(19, 1, 'Administrator', 'Lock pemesanan unit : A/1-17', '127.0.0.1', '2015-05-29 08:14:49'),
+(20, 1, 'Administrator', 'Unlock pemesanan unit : A/1-17', '127.0.0.1', '2015-05-29 08:17:54'),
+(21, 1, 'Administrator', 'Hapus data siteplan : TOWER A FLOOR 40', '127.0.0.1', '2015-05-29 08:20:11'),
+(22, 1, 'Administrator', 'Hapus data siteplan : TOWER A FLOOR 34', '127.0.0.1', '2015-05-29 08:20:15'),
+(23, 1, 'Administrator', 'Hapus data siteplan : TOWER A FLOOR 24', '127.0.0.1', '2015-05-29 08:20:19'),
+(24, 1, 'Administrator', 'Hapus data siteplan : TOWER A FLOOR 14', '127.0.0.1', '2015-05-29 08:20:23'),
+(25, 1, 'Administrator', 'Hapus data siteplan : TOWER A FLOOR 13', '127.0.0.1', '2015-05-29 08:20:27');
 
 -- --------------------------------------------------------
 
