@@ -79,6 +79,8 @@
                 var status = result.split("|");
                 $("#status_kehadiran_" + id_pemesanan).html("<font color='red'>" + status[0] + "</font>");
                 $("#waktu_kehadiran_" + id_pemesanan).html("<font color='green'>" + status[1] + "</font>");
+                $("#jumlah_hadir").html("<font color='black'>" + status[2] + "</font>");
+                $("#jumlah_belum_hadir").html("<font color='black'>" + status[3] + "</font>");
                 $("#kehadiran_" + id_pemesanan).hide();
                 $("#transaksi_" + id_pemesanan).show();
 

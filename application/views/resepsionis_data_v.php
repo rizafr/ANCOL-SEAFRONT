@@ -6,6 +6,10 @@
 <div class="margin_center" style="width:85%;">
     <div class="header_data">Daftar Tamu</div>
 
+    <div class="status_data"> 
+        Sudah Hadir :<div id="jumlah_hadir"> <?php echo $jumlah_hadir->jumlah_hadir ?></div> <br />
+        Belum Hadir : <div id="jumlah_belum_hadir"><?php echo $jumlah_belum_hadir->jumlah_belum_hadir ?></div>
+    </div>
 
     <div class="clear"></div>
     <div class="adv-table">

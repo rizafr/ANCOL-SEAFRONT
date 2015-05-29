@@ -1,8 +1,9 @@
 <?php include "fungsi_tanggal.php"; ?>
+<?php include "terbilang.php"; ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Print spp</title>
+        <title>Print_SP_<?php echo $pemesanan->nomor_pemesanan; ?>_<?php echo $pemesanan->nama_lengkap; ?></title>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>files/css/sp.css">
     </head>
     <body onload="window.print()">
@@ -37,9 +38,9 @@
                     <td height="5"></td>
                 </tr>
                 <tr>
-                    <td class="garis_isian"><a><?php echo $pemesanan->nama_lengkap; ?></a></td>
+                    <td class="garis_isian"><a><?php echo ucwords($pemesanan->nama_lengkap) ?></a></td>
                     <td></td>
-                    <td class="garis_isian"><a><?php echo $pemesanan->nomor_pemesanan; ?></a></td>
+                    <td class="garis_isian"><a><?php echo ucwords($pemesanan->nomor_pemesanan) ?></a></td>
                 </tr>
             </table>
 
@@ -52,7 +53,7 @@
                     <td height="5"></td>
                 </tr>
                 <tr>
-                    <td class="garis_isian"><a><?php echo $pemesanan->alamat_ktp; ?></a></td>
+                    <td class="garis_isian"><a><?php echo ucwords($pemesanan->alamat_ktp); ?></a></td>
                     <td class="garis_isian"><a><?php echo $pemesanan->no_npwp; ?></a></td>
                 </tr>
             </table>
@@ -99,7 +100,7 @@
                     <td height="5"></td>
                 </tr>
                 <tr>
-                    <td class="garis_isian"><a><?php echo $pemesanan->alamat_surat_menyurat; ?></a></td>
+                    <td class="garis_isian"><a><?php echo ucwords($pemesanan->alamat_surat_menyurat); ?></a></td>
                 </tr>
             </table>
 
@@ -133,7 +134,7 @@
                     <td width="2%"></td>
                     <td width="20%"><a>Harga Sarusun Bersih</a></td>
                     <td width="2%"></td>
-                    <td width="19%" class="garis_isian"><a></a></td>
+                    <td width="19%" class="garis_isian"><a><?php echo number_format($data_unit->harga_jual_inc_ppn * 90 / 100, 0) ?></a></td>
                     <td width="2%"></td>
                     <td width="20%"><a>Cara Bayar</a></td>
                 </tr>
@@ -144,9 +145,17 @@
                     <td></td>
                     <td><a>PPN 10%</a></td>
                     <td></td>
-                    <td class="garis_isian"><a></a></td>
+                    <td class="garis_isian"><a><?php echo number_format($data_unit->harga_jual_inc_ppn * 10 / 100, 0) ?></a></td>
                     <td></td>
-                    <td class="garis_isian"><a></a></td>
+                    <td class="garis_isian"><a> <?php
+                            if ($pemesanan->tipe_pembayaran == 'Cash') {
+                                $tipe = 'CB';
+                            } else {
+                                $tipe = 'KPA';
+                            }
+
+                            echo $tipe . " " . $pemesanan->tahap_pembayaran . " X";
+                            ?></a></td>
                 </tr>
                 <tr>
                     <td>3. Lantai</td>
@@ -166,7 +175,7 @@
                     <td></td>
                     <td><a>Terbilang</a></td>
                     <td></td>
-                    <td></td>
+                    <td><i><?php echo (ucwords(Terbilang($pemesanan->harga_jual))) ?> Rupiah</i></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -245,7 +254,7 @@
                     <td class="border_table"><?php echo $pemesanan->nama_lengkap; ?></td>
                     <td class="border_table">&nbsp;<br/>&nbsp;<br/>Sales / Agent</td>
                     <td class="border_table">&nbsp;<br/>&nbsp;<br/>GM Properti 1</td>
-                    <td class="border_table">&nbsp;</td>
+                    <td class="border_table">&nbsp;<br/>Nicke Putri<br/>Manager Marketing</td>
                 </tr>
             </table>
             <table width="100%" cellspacing="0" class="kata_profil pad">
@@ -289,37 +298,34 @@
                     <td width="15%" class="border_table">Rupiah</td>
                     <td width="10%" class="kata_profil">Catatan :</td>
                 </tr>
-                  <tr bgcolor="#FFFFFF">
-                            <td class="border_table"> Booking Fee </td>
-                            <td class="border_table"> 30 Mei 2015 </td>
-                            <td class="border_table"> 20.000.000 </td>
-                        </tr>
+                <tr bgcolor="#FFFFFF">
+                    <td class="border_table"> Booking Fee </td>
+                    <td class="border_table"> 30 Mei 2015 </td>
+                    <td class="border_table"> 20.000.000 </td>
+                </tr>
                 <?php
-                
-                    if ($jumlah_rencana > 0) {
-                        $i = 1;
-                        $total = $pemesanan->booking_fee;
-                        foreach ($rencana as $data_rencana) {
-                            ?>
-
-                            <tr bgcolor="#FFFFFF">
-                                <td class="border_table"> Angsuran-<?php echo $i; ?> </div></td>
-                                <td class="border_table"> <?php echo ubah_format_tanggal($data_rencana->tanggal_rencana, "") ?></td>
-                                <td class="border_table"> <?php echo number_format(round($data_rencana->nilai), 0); ?> </td>
-                                <?php $total += $data_rencana->nilai; ?>
-                            </tr>
-
-                            <?php
-                            $i++;
-                        }
+                if ($jumlah_rencana > 0) {
+                    $i = 1;
+                    $total = $pemesanan->booking_fee;
+                    foreach ($rencana as $data_rencana) {
                         ?>
+
                         <tr bgcolor="#FFFFFF">
-                            <td colspan="2" class="border_table"> Total</td>
-                            <td class="border_table"> <?php echo number_format(round($total), 0); ?> </td>
+                            <td class="border_table"> Angsuran-<?php echo $i; ?> </div></td>
+                            <td class="border_table"> <?php echo ubah_format_tanggal($data_rencana->tanggal_rencana, "") ?></td>
+                            <td class="border_table"> <?php echo number_format(round($data_rencana->nilai), 0); ?> </td>
+                            <?php $total += $data_rencana->nilai; ?>
                         </tr>
-                    <?php }
-                  
-                    
+
+                        <?php
+                        $i++;
+                    }
+                    ?>
+                    <tr bgcolor="#FFFFFF">
+                        <td colspan="2" class="border_table"> Total</td>
+                        <td class="border_table"> <?php echo number_format(round($total), 0); ?> </td>
+                    </tr>
+                <?php }
                 ?>
                 <tr>
                     <td>&nbsp;</td>

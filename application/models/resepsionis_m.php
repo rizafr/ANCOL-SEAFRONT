@@ -20,6 +20,18 @@ class Resepsionis_m extends CI_Model {
        $query = $this->db->query("SELECT * FROM tbl_resepsionis");
 		return $query;
     }
+    
+    # Menampilkan data pemesanan berdasarkan status kedatangan
+
+    function get_jumlah_kehadiran(){
+       $query = $this->db->query("SELECT count( nama_lengkap ) AS jumlah_hadir FROM tbl_resepsionis where status_kehadiran ='1' ");
+	return $query;
+    }
+    
+     function get_jumlah_belum_hadir(){
+       $query = $this->db->query("SELECT count( nama_lengkap ) AS  jumlah_belum_hadir FROM tbl_resepsionis where status_kehadiran ='0' ");
+	return $query;
+    }
 
     # Menampilkan data pemesanan berdasarkan jenis
     # ---------------------------------------------

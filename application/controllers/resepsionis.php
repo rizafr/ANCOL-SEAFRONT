@@ -36,6 +36,8 @@ class Resepsionis extends CI_Controller {
 
     public function resepsionis_list($limit) {
         $data['pemesanan'] = $this->resepsionis_m->get_by_id()->result();
+        $data['jumlah_hadir'] = ($this->resepsionis_m->get_jumlah_kehadiran()->row());
+        $data['jumlah_belum_hadir'] = ($this->resepsionis_m->get_jumlah_belum_hadir()->row());
         $this->load->view('resepsionis_data_v', $data);
     }
 
@@ -46,10 +48,12 @@ class Resepsionis extends CI_Controller {
             , 'waktu_kehadiran' => $this->tanggal
         );
         $hasil = $this->resepsionis_m->edit($nomor_pemesanan, $data);
+        $jumlah_hadir = ($this->resepsionis_m->get_jumlah_kehadiran()->row());
+        $jumlah_belum_hadir = ($this->resepsionis_m->get_jumlah_belum_hadir()->row());
 
         $show_status_verify = "<img src='" . base_url() . "files/images/ceklis.png'>";
         $waktu_kehadiran = $this->tanggal;
-        echo $show_status_verify . "|" . $waktu_kehadiran;
+        echo $show_status_verify . "|" . $waktu_kehadiran . "|" . $jumlah_hadir. "|" .$jumlah_belum_hadir ;
     }
 
     public function transaksi($id_pemesanan) {

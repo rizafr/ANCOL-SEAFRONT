@@ -17,6 +17,8 @@ function Terbilang($x)
   elseif ($x < 1000000)
     return Terbilang($x / 1000) . " ribu" . Terbilang($x % 1000);
   elseif ($x < 1000000000)
-    return Terbilang($x / 1000000) . " juta" . Terbilang($x % 1000000);
+    return Terbilang($x / 1000000) . " juta" . Terbilang($x % 1000000); 
+	elseif ($x < 100000000000)
+    return Terbilang($x / 1000000000) . " miliar" . Terbilang($x % 1000000000);
 }
 ?>

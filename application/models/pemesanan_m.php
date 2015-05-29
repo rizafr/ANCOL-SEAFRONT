@@ -19,7 +19,7 @@ class Pemesanan_m extends CI_Model {
 
     function get_by_id($id_pemesanan) {
         $query = $this->db->query("	SELECT 		tbl_promo.*, 
-			tbl_pemesanan.*, 
+			tbl_pemesanan.*, tbl_pemesanan.harga_jual,
 			tbl_virtual_account.*,
 			CONCAT(tbl_pemesanan.tipe_pembayaran, ' ', tbl_pemesanan.tahap_pembayaran) AS cara_pembayaran,
 			tbl_agent.team as 'nama_agent', sm.nama_lengkap AS sales_manager, tbl_user.nama_lengkap as 'nama_sales', 

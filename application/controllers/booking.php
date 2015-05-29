@@ -420,6 +420,7 @@ class Booking extends CI_Controller {
             );
         } else {
             //hitung diskon
+            $diskon = 0;
             $nup = $this->input->post('nomor_pemesanan');
             if (($nup > 0) && ($nup <= 56)) {
                 if (($diskon_khusus != "") || (!empty($diskon_khusus)) || ($diskon > 0)) {
@@ -431,25 +432,25 @@ class Booking extends CI_Controller {
                 if (($diskon_khusus != "") || (!empty($diskon_khusus)) || ($diskon > 0)) {
                     $diskon = $diskon_khusus / 100;
                 } else {
-                    $diskon = 0.8;
+                    $diskon = 0.08;
                 }
             } elseif (($nup > 100) && ($nup <= 150)) {
                 if (($diskon_khusus != "") || (!empty($diskon_khusus)) || ($diskon > 0)) {
                     $diskon = $diskon_khusus / 100;
                 } else {
-                    $diskon = 0.6;
+                    $diskon = 0.06;
                 }
             } elseif (($nup > 150) && ($nup <= 200)) {
                 if (($diskon_khusus != "") || (!empty($diskon_khusus)) || ($diskon > 0)) {
                     $diskon = $diskon_khusus / 100;
                 } else {
-                    $diskon = 0.4;
+                    $diskon = 0.04;
                 }
             } elseif (($nup > 200) && ($nup <= 250)) {
                 if (($diskon_khusus != "") || (!empty($diskon_khusus)) || ($diskon > 0)) {
                     $diskon = $diskon_khusus / 100;
                 } else {
-                    $diskon = 0.2;
+                    $diskon = 0.02;
                 }
             } elseif (($nup > 250) && ($nup <= 300)) {
                 if (($diskon_khusus != "") || (!empty($diskon_khusus)) || ($diskon > 0)) {
