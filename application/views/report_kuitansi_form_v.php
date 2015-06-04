@@ -261,7 +261,7 @@ if (!$this->access_lib->_if("adm,mgr")) {
                     <table class="t-popup">
                         <tr>
                             <td>Jumlah Rp. : <input type="text" name="jumlah" id="jumlah" size="15" value="<?php echo $pemesanan->booking_fee; ?>"></td>	
-                            <td>Jakarta, <input  type="date" name="tanggal" id="datepicker" size="15" value="<?php echo date('d-m-Y') ?>"></td>
+                            <td>Jakarta, <input  type="text" name="tanggal" id="datepicker" size="15" value="<?php echo date('d-m-Y') ?>"></td>
                             <td>Nama Pejabat <input id="nama_pejabat" type="text" name="nama_pejabat" size="25" value="<?php echo $this->session->userdata('nama_lengkap'); ?>"></td>
                         </tr>
                     </table>

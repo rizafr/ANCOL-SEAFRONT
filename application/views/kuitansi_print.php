@@ -1,3 +1,4 @@
+<?php include "fungsi_tanggal.php"; ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,7 +6,7 @@
         <meta charset="UTF-8">
         <style type="text/css">
             @page {
-                size: A5 landscape;
+                size: A5 landscape ;
                 margin: 0;
             }
             @media screen, print{
@@ -146,7 +147,7 @@
                     <td class="kolom kolom_bawah">20.000.000,-</td>
                 </tr>
             </table>
-            <div id="tanggal" class="kata">Jakarta, <?php echo $tanggal; ?></div>	
+            <div id="tanggal" class="kata">Jakarta, <?php echo ubah_format_tanggal($tanggal,""); ?></div>	
             <table width="100%" class="kata footer">
                 <tr>
                     <td width="25%">Pemesan,</td>

@@ -134,7 +134,7 @@
                     <td width="2%"></td>
                     <td width="20%"><a>Harga Sarusun Bersih</a></td>
                     <td width="2%"></td>
-                    <td width="19%" class="garis_isian"><a></a></td>
+                    <td width="19%" class="garis_isian"><a><?php echo number_format($data_unit->harga_jual_inc_ppn * 90 / 100, 0) ?></a></td>
                     <td width="2%"></td>
                     <td width="20%"><a>Cara Bayar</a></td>
                 </tr>
@@ -145,7 +145,7 @@
                     <td></td>
                     <td><a>PPN 10%</a></td>
                     <td></td>
-                    <td class="garis_isian"><a></a></td>
+                    <td class="garis_isian"><a><?php echo number_format($data_unit->harga_jual_inc_ppn * 10 / 100, 0) ?></a></td>
                     <td></td>
                     <td class="garis_isian"><a> <?php
                             if ($pemesanan->tipe_pembayaran == 'Cash') {
@@ -299,11 +299,34 @@
                     <td width="10%" class="kata_profil">Catatan :</td>
                 </tr>
                 <tr bgcolor="#FFFFFF">
-                    <td class="border_table"> </td>
-                    <td class="border_table">  </td>
-                    <td class="border_table">  </td>
+                    <td class="border_table"> Booking Fee </td>
+                    <td class="border_table"> 30 Mei 2015 </td>
+                    <td class="border_table"> 20.000.000 </td>
                 </tr>
-                
+                <?php
+                if ($jumlah_rencana > 0) {
+                    $i = 1;
+                    $total = $pemesanan->booking_fee;
+                    foreach ($rencana as $data_rencana) {
+                        ?>
+
+                        <tr bgcolor="#FFFFFF">
+                            <td class="border_table"> Angsuran-<?php echo $i; ?> </div></td>
+                            <td class="border_table"> <?php echo ubah_format_tanggal($data_rencana->tanggal_rencana, "") ?></td>
+                            <td class="border_table"> <?php echo number_format(round($data_rencana->nilai), 0); ?> </td>
+                            <?php $total += $data_rencana->nilai; ?>
+                        </tr>
+
+                        <?php
+                        $i++;
+                    }
+                    ?>
+                    <tr bgcolor="#FFFFFF">
+                        <td colspan="2" class="border_table"> Total</td>
+                        <td class="border_table"> <?php echo number_format(round($total), 0); ?> </td>
+                    </tr>
+                <?php }
+                ?>
                 <tr>
                     <td>&nbsp;</td>
                 </tr>
