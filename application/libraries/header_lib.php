@@ -58,6 +58,13 @@ class Header_lib{
 		<script type="text/javascript" src="'.base_url().'files/js/terbilang_js.js"></script>
 		<script type="text/javascript" src="'.base_url().'files/js/ribuan.js"></script>
 		
+		
+		 <script src="'.base_url().'files/form-validator/jquery.form-validator.min.js"></script>
+		 <script> $.validate({
+					  modules : "file"
+					});
+		</script>
+		
 		<script type="text/javascript">
 			var base_url = "'.base_url().'";
 			

@@ -62,6 +62,7 @@ if ($status_form == "add") {
 
     function validasi()
     {
+        var nomor_pemesanan = $('#nomor_pemesanan').val();
         var nama_lengkap = $('#nama_lengkap').val();
         var no_ktp = $('#no_ktp').val();
         var hp = $('#hp').val();
@@ -73,9 +74,7 @@ if ($status_form == "add") {
         var otoritas_diskon = $('#otoritas_diskon').val();
         var pass2 = "nicke";
 
-
-
-
+		
         if (nama_lengkap == "")
         {
             alert("Nama Lengkap harus diisi !");
@@ -502,7 +501,7 @@ if ($status == "Promo") {
             </style>
 
             <div class="frame_tabel radius transparent" style="width:1000px" id="td-height">
-                <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" name="pemesanan" onSubmit="return validasi();">
+                <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" name="pemesanan" id="validation-events" onSubmit="return validasi();">
                     <table width="1000px" cellspacing="1px" cellpadding="2px" bgcolor="#CCCCCC" style="float:left">
                         <tr bgcolor="#FFFFFF">
                             <td bgcolor="#0066FF"><div class="header_tabel">Data Pemesan</div></td>
@@ -537,7 +536,7 @@ if ($status == "Promo") {
                             <td width="200" bgcolor="#999999"><div class="isi_tabel"><strong>NUP<span class="required_star">*</span></strong></div></td>
                             <td>
                                 <div class="isi_tabel">
-                                    <input type="text" name="nomor_pemesanan" id="nomor_pemesanan" size="40" value="<?php echo $nomor_pemesanan; ?>" onkeyup="lookup(this.value);" autocomplete="off">
+                                    <input type="text" name="nomor_pemesanan" id="nomor_pemesanan" size="40" value="<?php echo $nomor_pemesanan; ?>" data-validation="number" onkeyup="lookup(this.value);" autocomplete="off">
                                     <div id="suggestions"></div>
                                 </div>
                             </td>
