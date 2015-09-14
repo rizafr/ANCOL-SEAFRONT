@@ -77,7 +77,7 @@
 			<div class="navbar-header">
 				<a href="#" class="navbar-brand visible-lg visible-md">
 					<img src="<?php echo base_url(); ?>assets/home/logo.png" style="width: 20px;display: inline-block;vertical-align: top;" alt="">
-					<strong>E-MARKETING</strong> ·PT. Pembangunan Jaya Ancol Tbk
+					<strong>SIAPRA</strong> ·PT. Pembangunan Jaya Ancol Tbk
 				</a>
 				<a href="<?php echo base_url(); ?>admin/homes" class="navbar-brand visible-sm">
 					<img src="<?php echo base_url(); ?>assets/home/logo.png" style="width: 20px;display: inline-block;vertical-align: top;" alt="">

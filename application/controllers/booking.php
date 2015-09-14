@@ -709,9 +709,10 @@ class Booking extends CI_Controller {
 
         redirect("booking/form_kartu_keluarga/" . $this->input->post('id_siteplan') . "/" . $this->input->post('id_unit') . "/" . $data_kartu_keluarga->id_kartu_keluarga . "/" . $this->input->post('id_pemesanan'));
     }
-
+	
+	///////////////////////////////////
     # RENCANA
-
+	///////////////////////////////////
     public function rencana_list($id_unit, $id_pemesanan) {
         $this->load->model('unit_m');
         $this->load->model('pemesanan_m');
@@ -768,11 +769,11 @@ class Booking extends CI_Controller {
 
             $keterangan = "UANG MUKA";
             if ($tipe_pembayaran == 'Cash') {
-                $besar_angsuran = ($harga_pemesanan - 20000000) / $tahap_pembayaran;
+                $besar_angsuran = ($harga_pemesanan) / $tahap_pembayaran;
             }
             if ($tipe_pembayaran == 'KPR') {
-                $kpr = harga_pemesanan * 0.4;
-                $besar_angsuran = ($harga_pemesanan - $kpr - 20000000) / $tahap_pembayaran;
+                $kpr = $harga_pemesanan * (0.4);
+                $besar_angsuran = ($kpr - 20000000) / $tahap_pembayaran;
             }
 
 
@@ -786,7 +787,7 @@ class Booking extends CI_Controller {
                     }
                     if ($tipe_pembayaran == 'KPR') {
                         $keterangan = "UANG MUKA";
-                        $nilai = "-";
+                        $nilai = $besar_angsuran;
                     }
                 }
 
@@ -799,7 +800,7 @@ class Booking extends CI_Controller {
                     }
                     if ($tipe_pembayaran == 'KPR') {
                         $keterangan = "UANG MUKA";
-                        $nilai = $plafon_kpr;
+                        $nilai = $besar_angsuran;
                     }
                 } else {
                     $nilai = $besar_angsuran;
